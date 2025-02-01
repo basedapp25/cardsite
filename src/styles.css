@@ -73,7 +73,7 @@ button:hover {
   }
 }
 
-/* Portrait image wrapper with 2:3 aspect ratio, reduced to 1/3 width of container */
+/* Portrait image wrapper with 2:3 aspect ratio, reduced to 1/3 width */
 .card-img-wrapper {
   width: 33.33%;
   max-width: 200px;
@@ -92,11 +92,14 @@ button:hover {
   object-position: center;
 }
 
-/* Elegant bullet styling for unordered lists */
-ul {
+/* Consistent list styling for both unordered and ordered lists */
+ul,
+ol {
   list-style: none;
   padding-left: 1.5rem;
+  margin: 0 0 1rem;
 }
+
 ul li::before {
   content: "♦ ";
   color: gold;
@@ -104,13 +107,22 @@ ul li::before {
   margin-right: 0.5rem;
 }
 
-/* Fix for ordered lists: ensure numbers and content are left aligned */
+/* For ordered lists, use a counter for gold numbers */
 ol {
-  text-align: left;
-  padding-left: 1.5rem;
-  margin: 0 auto 1rem;
+  counter-reset: li;
 }
+
 ol li {
-  text-align: left;
+  counter-increment: li;
+  position: relative;
+  padding-left: 2em;
   margin-bottom: 0.5rem;
+}
+
+ol li::before {
+  content: counter(li) ". ";
+  position: absolute;
+  left: 0;
+  color: gold;
+  font-weight: bold;
 }
