@@ -1,5 +1,5 @@
 :root {
-  --transition-duration: 0.5s;
+  --transition-duration: 0.5s; /* Change to disable/modify magic effect */
 }
 
 body {
@@ -55,6 +55,22 @@ button:hover {
 
 #card-display.fade-in {
   opacity: 1;
+  animation: magic var(--transition-duration) ease-in-out;
+}
+
+@keyframes magic {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) rotate(-5deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .card-img {

@@ -13,7 +13,7 @@ title: Based Cards
     {
       title: "{{ card.data.title }}",
       content: `{{ card.templateContent | safe | replace('\n', ' ') }}`,
-      image: "{{ card.data.image | default('') }}"
+      image: "{{ card.data.image or (card.fileSlug ~ '.webp') }}"
     }{% if not loop.last %},{% endif %}
     {% endfor %}
   ];
@@ -28,7 +28,7 @@ title: Based Cards
           cardDisplay.style.display = "block";
       }
       cardDisplay.classList.remove('fade-in');
-      void cardDisplay.offsetWidth; // force reflow for animation restart
+      void cardDisplay.offsetWidth; // reflow to restart animation
       let html = '';
       if(card.image) {
         html += '<img src="/card_images/' + card.image + '" alt="' + card.title + '" class="card-img">';
