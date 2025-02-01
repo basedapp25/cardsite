@@ -21,21 +21,32 @@ title: Based Cards
   console.log("Cards array:", cards);
 
   const cardDisplay = document.getElementById('card-display');
+
   document.getElementById('pull-button').addEventListener('click', function() {
     const card = cards[Math.floor(Math.random() * cards.length)];
     if(card) {
       if(cardDisplay.style.display === "none" || cardDisplay.style.display === "") {
-          cardDisplay.style.display = "block";
+        cardDisplay.style.display = "block";
       }
       cardDisplay.classList.remove('fade-in');
-      void cardDisplay.offsetWidth; // reflow to restart animation
+      
       let html = '';
       if(card.image) {
-        html += '<img src="/card_images/' + card.image + '" alt="' + card.title + '" class="card-img">';
+        let baseName = card.image.replace(/\.(webp|png|jpg)$/i, "");
+        html += `<picture class="card-img">
+  <source srcset="/card_images/${baseName}.webp" type="image/webp">
+  <source srcset="/card_images/${baseName}.png" type="image/png">
+  <source srcset="/card_images/${baseName}.jpg" type="image/jpeg">
+  <img src="/card_images/${baseName}.webp" alt="${card.title}">
+</picture>`;
       }
       html += '<h2>' + card.title + '</h2>' + card.content;
       cardDisplay.innerHTML = html;
-      cardDisplay.classList.add('fade-in');
+      
+      // Delay re-adding the class to allow the animation to retrigger on each pull.
+      setTimeout(() => {
+        cardDisplay.classList.add('fade-in');
+      }, 10);
     }
   });
 </script>

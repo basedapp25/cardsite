@@ -1,10 +1,11 @@
 module.exports = function(eleventyConfig) {
-  // Collection: all markdown cards in src/cards
   eleventyConfig.addCollection("cards", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/cards/*.md");
   });
-  // Copy static assets
+  
+  // Copy static assets and card_images folder
   eleventyConfig.addPassthroughCopy("src/styles.css");
+  eleventyConfig.addPassthroughCopy("src/card_images");
 
   return {
     dir: {

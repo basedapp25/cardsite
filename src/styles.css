@@ -1,5 +1,5 @@
 :root {
-  --transition-duration: 0.5s; /* Change to disable/modify magic effect */
+  --transition-duration: 0.5s; /* Set to 0s to disable magic effect */
 }
 
 body {
@@ -82,7 +82,6 @@ button:hover {
   margin-bottom: 1rem;
 }
 
-/* Elegant bullet styling for tarot card lists */
 ul {
   list-style: none;
   padding-left: 1.5rem;
