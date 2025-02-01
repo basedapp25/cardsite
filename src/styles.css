@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: 'Cinzel', serif;
+  font-family: 'Lora', serif;
   background: linear-gradient(135deg, #2c003e, #000428);
   color: #f0e6d2;
   margin: 0;
@@ -14,6 +14,7 @@ body {
 }
 
 h1 {
+  font-family: 'Cinzel', serif;
   font-size: 3rem;
   margin-bottom: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -37,7 +38,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Hide the card display until a card is pulled */
 #card-display {
   display: none;
   background: rgba(255, 255, 255, 0.1);
@@ -73,9 +73,10 @@ button:hover {
   }
 }
 
+/* Portrait image wrapper with 2:3 aspect ratio */
 .card-img-wrapper {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 1rem;
