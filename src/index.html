@@ -12,18 +12,29 @@ title: Based Cards
     {% for card in collections.cards %}
     {
       title: "{{ card.data.title }}",
-      content: `{{ card.templateContent | safe | replace('\n', ' ') }}`
+      content: `{{ card.templateContent | safe | replace('\n', ' ') }}`,
+      image: "{{ card.data.image | default('') }}"
     }{% if not loop.last %},{% endif %}
     {% endfor %}
   ];
+
+  console.log("Cards array:", cards);
 
   const cardDisplay = document.getElementById('card-display');
   document.getElementById('pull-button').addEventListener('click', function() {
     const card = cards[Math.floor(Math.random() * cards.length)];
     if(card) {
+      if(cardDisplay.style.display === "none" || cardDisplay.style.display === "") {
+          cardDisplay.style.display = "block";
+      }
       cardDisplay.classList.remove('fade-in');
-      void cardDisplay.offsetWidth; // force reflow for re-triggering animation
-      cardDisplay.innerHTML = '<h2>' + card.title + '</h2>' + card.content;
+      void cardDisplay.offsetWidth; // force reflow for animation restart
+      let html = '';
+      if(card.image) {
+        html += '<img src="/card_images/' + card.image + '" alt="' + card.title + '" class="card-img">';
+      }
+      html += '<h2>' + card.title + '</h2>' + card.content;
+      cardDisplay.innerHTML = html;
       cardDisplay.classList.add('fade-in');
     }
   });
