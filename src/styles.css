@@ -1,5 +1,5 @@
 :root {
-  --transition-duration: 0.5s; /* Set to 0s to disable magic effect */
+  --transition-duration: 0.5s; /* Set to 0s to disable the magic effect */
 }
 
 body {
@@ -73,15 +73,24 @@ button:hover {
   }
 }
 
-.card-img {
+.card-img-wrapper {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
-  object-position: center;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
   border-radius: 8px;
   margin-bottom: 1rem;
+  background: #000;
 }
 
+.card-img-wrapper picture,
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Elegant bullet styling for tarot card lists */
 ul {
   list-style: none;
   padding-left: 1.5rem;

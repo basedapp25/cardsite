@@ -29,21 +29,23 @@ title: Based Cards
         cardDisplay.style.display = "block";
       }
       cardDisplay.classList.remove('fade-in');
-      
+
       let html = '';
       if(card.image) {
         let baseName = card.image.replace(/\.(webp|png|jpg)$/i, "");
-        html += `<picture class="card-img">
-  <source srcset="/card_images/${baseName}.webp" type="image/webp">
-  <source srcset="/card_images/${baseName}.png" type="image/png">
-  <source srcset="/card_images/${baseName}.jpg" type="image/jpeg">
-  <img src="/card_images/${baseName}.webp" alt="${card.title}">
-</picture>`;
+        html += `<div class="card-img-wrapper">
+  <picture>
+    <source srcset="/card_images/${baseName}.webp" type="image/webp">
+    <source srcset="/card_images/${baseName}.png" type="image/png">
+    <source srcset="/card_images/${baseName}.jpg" type="image/jpeg">
+    <img src="/card_images/${baseName}.webp" alt="${card.title}">
+  </picture>
+</div>`;
       }
       html += '<h2>' + card.title + '</h2>' + card.content;
       cardDisplay.innerHTML = html;
-      
-      // Delay re-adding the class to allow the animation to retrigger on each pull.
+
+      // Delay re-adding the class to retrigger the animation on each pull.
       setTimeout(() => {
         cardDisplay.classList.add('fade-in');
       }, 10);
