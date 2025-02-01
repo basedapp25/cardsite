@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: Tarot Card Pull
+---
+
+<h1>Tarot Card Pull</h1>
+<button id="pull-button">Pull a Card</button>
+<div id="card-display"></div>
+
+<script>
+  const cards = [
+    {% for card in collections.cards %}
+    {
+      title: "{{ card.data.title }}",
+      content: `{{ card.templateContent | safe | replace('\n', ' ') }}`
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ];
+
+  document.getElementById('pull-button').addEventListener('click', function() {
+    const card = cards[Math.floor(Math.random() * cards.length)];
+    document.getElementById('card-display').innerHTML = '<h2>' + card.title + '</h2>' + card.content;
+  });
+</script>
