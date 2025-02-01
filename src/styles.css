@@ -126,3 +126,25 @@ ol li::before {
   color: gold;
   font-weight: bold;
 }
+
+/* Mobile responsiveness adjustments */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  button {
+    font-size: 1.2rem;
+    padding: 0.75rem 1.2rem;
+  }
+  #card-display {
+    padding: 1rem;
+  }
+  .card-img-wrapper {
+    width: 50%;
+    max-width: none;
+  }
+}
