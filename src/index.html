@@ -1,9 +1,9 @@
 ---
 layout: base.njk
-title: Tarot Card Pull
+title: Based Cards
 ---
 
-<h1>Tarot Card Pull</h1>
+<h1>Based Cards</h1>
 <button id="pull-button">Pull a Card</button>
 <div id="card-display"></div>
 
@@ -17,10 +17,14 @@ title: Tarot Card Pull
     {% endfor %}
   ];
 
+  const cardDisplay = document.getElementById('card-display');
   document.getElementById('pull-button').addEventListener('click', function() {
     const card = cards[Math.floor(Math.random() * cards.length)];
     if(card) {
-      document.getElementById('card-display').innerHTML = '<h2>' + card.title + '</h2>' + card.content;
+      cardDisplay.classList.remove('fade-in');
+      void cardDisplay.offsetWidth; // force reflow for re-triggering animation
+      cardDisplay.innerHTML = '<h2>' + card.title + '</h2>' + card.content;
+      cardDisplay.classList.add('fade-in');
     }
   });
 </script>
