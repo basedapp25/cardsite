@@ -19,6 +19,8 @@ title: Tarot Card Pull
 
   document.getElementById('pull-button').addEventListener('click', function() {
     const card = cards[Math.floor(Math.random() * cards.length)];
-    document.getElementById('card-display').innerHTML = '<h2>' + card.title + '</h2>' + card.content;
+    if(card) {
+      document.getElementById('card-display').innerHTML = '<h2>' + card.title + '</h2>' + card.content;
+    }
   });
 </script>
